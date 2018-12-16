@@ -14,8 +14,8 @@ To start the application:
   2. change directory: ```cd partner_lead_integration_consumer```
   3. Install dependencies: ```npm i```
   4. Set the following environment variables
-    - CLOUDAMQP_URL: the url to HD rabbit mq given by the CRM team
-    - PARTNER_TOPIC: the partner topic given by the CRM team
+      - CLOUDAMQP_URL: the url to HD rabbit mq given by the CRM team
+      - PARTNER_TOPIC: the partner topic given by the CRM team
   5. npm start
 
 **Important** queues are secure so that a partner can only listen to his queue.
