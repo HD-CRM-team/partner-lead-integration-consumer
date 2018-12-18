@@ -1,9 +1,9 @@
 const jackrabbit = require('jackrabbit');
 const RABBIT_URL = process.env.CLOUDAMQP_URL || 'amqp://localhost:5672';
-const PARTNER_TOPIC = process.env.PARTNER_TOPIC || 'partner.p_test'
-console.log(RABBIT_URL)
+const PARTNER_TOPIC = process.env.PARTNER_TOPIC || 'partner.p_test';
+console.log(RABBIT_URL);
 start();
-
+ 
 function start() {
   console.log({ type: 'info', message: 'Subscribed to lead service.' });
 
@@ -13,8 +13,8 @@ function start() {
   process.once('uncaughtException', onError);
 
   function create() {
-    const exchange = rabbit.topic('partner_leads');
-    const rpc = exchange.queue({ exclusive: true, key: PARTNER_TOPIC });
+    const exchange = rabbit.direct("partner_leads", {noReply:true});
+    const rpc = exchange.queue({key:PARTNER_TOPIC,name: PARTNER_TOPIC, durable:true});
     rpc.consume(onLog,  { noAck: true });
   }
 
