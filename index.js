@@ -18,8 +18,8 @@ function start() {
     rpc.consume(onLog,  { noAck: true });
   }
 
-  function onLog(data, msg) {
-    console.log(JSON.stringify(data, null, 2));
+  function onLog(data) {
+    console.log('message is:',JSON.stringify(data, null, 2));
   }
 
   function onError(err) {
