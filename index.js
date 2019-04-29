@@ -1,9 +1,9 @@
 const jackrabbit = require('jackrabbit');
 const RABBIT_URL = process.env.CLOUDAMQP_URL || 'amqp://localhost:5672';
 const PARTNER_TOPIC = process.env.PARTNER_TOPIC || 'partner.p_test';
-console.log(RABBIT_URL);
+
 start();
- 
+
 function start() {
   console.log({ type: 'info', message: 'Subscribed to lead service.' });
 
@@ -19,7 +19,10 @@ function start() {
   }
 
   function onLog(data) {
-    console.log('message is:',JSON.stringify(data, null, 2));
+    const payload = JSON.parse(data.toString("utf-8"));
+    console.log("--- Message ---");
+    console.log(JSON.stringify(payload, null, 2));
+    console.log("---------------");
   }
 
   function onError(err) {
