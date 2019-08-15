@@ -19,9 +19,8 @@ function start() {
   }
 
   function onLog(data) {
-    const payload = JSON.parse(data.toString("utf-8"));
     console.log("--- Message ---");
-    console.log(JSON.stringify(payload, null, 2));
+    console.log(JSON.stringify(data, null, 2));
     console.log("---------------");
   }
 
